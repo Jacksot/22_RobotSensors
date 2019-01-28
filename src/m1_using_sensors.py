@@ -11,13 +11,13 @@ import time
 import math
 
 # -----------------------------------------------------------------------------
-# TODO 2:  With your instructor, do quiz questions 1 through 5.
+# Done 2:  With your instructor, do quiz questions 1 through 5.
 #          After you understand the answers to those questions,
 #          mark this _TODO_ as DONE.
 # -----------------------------------------------------------------------------
 
 # -----------------------------------------------------------------------------
-# TODO 3:  With your instructor, do quiz questions 6 through XXX.
+# Done 3:  With your instructor, do quiz questions 6 through XXX.
 #          After you understand the answers to those questions,
 #          mark this _TODO_ as DONE.
 # -----------------------------------------------------------------------------
@@ -27,7 +27,7 @@ def main():
     # Un-comment out these tests as you implement the methods they test.
     # run_test_beep_and_tone()
     # run_test_go_straight_for_seconds()
-    # run_test_go_straight_for_inches_using_time()
+    run_test_go_straight_for_inches_using_time()
     # run_test_go_straight_for_inches_using_sensor()
     # run_test_raise_arm()
     # run_test_lower_arm()
@@ -43,7 +43,7 @@ def run_test_beep_and_tone():
        -- tone method of the ToneMaker class
     """
     # -------------------------------------------------------------------------
-    # TODO: 4.  Implement and test this method.
+    # Done: 4.  Implement and test this method.
     # -------------------------------------------------------------------------
     # IMPORTANT:
     #   For testing the   beep   method,
@@ -57,10 +57,15 @@ def run_test_beep_and_tone():
     #   in increments of 10, with 50 millisecond durations.
     #   Do not forget to apply the   wait   method to tone, as usual.
     # -------------------------------------------------------------------------
-
+    for k in range(10):
+        boop = Beeper()
+        boop.beep()
+    for k in range(100, 200, 10):
+        toot = ToneMaker()
+        toot.tone(k, 50)
 
 # -----------------------------------------------------------------------------
-# TODO 5:  With your instructor, do quiz questions XXX through XXX.
+# Done 5:  With your instructor, do quiz questions XXX through XXX.
 #          After you understand the answers to those questions,
 #          mark this _TODO_ as DONE.
 # -----------------------------------------------------------------------------
@@ -96,7 +101,7 @@ def run_test_go_straight_for_seconds():
     beeper.beep()
     drive_system.go_straight_for_seconds(2.5, -50)
     # -------------------------------------------------------------------------
-    # TODO: 6.  Run the above tests.  Be sure to understand the
+    # Done: 6.  Run the above tests.  Be sure to understand the
     #              go_straight_for_seconds   method of   DriveSystem.
     # -------------------------------------------------------------------------
 
@@ -131,13 +136,13 @@ def run_test_go_straight_for_inches_using_time():
     beeper.beep()
     drive_system.go_straight_for_inches_using_time(12, -50)
     # -------------------------------------------------------------------------
-    # TODO: 7.  Run the above tests.  Be sure to understand the
+    # Done: 7.  Run the above tests.  Be sure to understand the
     #              go_straight_for_inches_using_time   method of   DriveSystem.
     # -------------------------------------------------------------------------
 
 
 # -----------------------------------------------------------------------------
-# TODO 8:  With your instructor, do quiz questions XXX through XXX.
+# Done 8:  With your instructor, do quiz questions XXX through XXX.
 #          After you understand the answers to those questions,
 #          mark this _TODO_ as DONE.
 # -----------------------------------------------------------------------------
@@ -180,7 +185,7 @@ def run_test_go_straight_for_inches_using_sensor():
 
 
 # -----------------------------------------------------------------------------
-# TODO 10:  With your instructor, do quiz questions XXX through XXX.
+# Done 10:  With your instructor, do quiz questions XXX through XXX.
 #          After you understand the answers to those questions,
 #          mark this _TODO_ as DONE.
 # -----------------------------------------------------------------------------
@@ -355,6 +360,15 @@ class DriveSystem(object):
         self.go_straight_for_seconds(seconds, speed)
 
     def go_straight_for_inches_using_sensor(self, inches, speed):
+        inches_per_degree = self.left_motor.WheelCircumference / 360
+        desired_degrees = inches / inches_per_degree
+
+        self.left_motor.reset_position()
+        self.go(speed, speed)
+        while True:
+            if distance_gone >= desired_degrees:
+                self.stop()
+                break
         pass
         # Live code this with students
 
