@@ -333,7 +333,6 @@ class DriveSystem(object):
         self.left_motor = Motor('B')
         self.right_motor = Motor('C')
 
-
     def go(self, left_wheel_speed, right_wheel_speed):
         self.left_motor.turn_on(left_wheel_speed)
         self.right_motor.turn_on(right_wheel_speed)
