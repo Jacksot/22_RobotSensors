@@ -3,8 +3,8 @@ This module lets you practice the use of robot sensors.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Tyrique Jackson
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import ev3dev.ev3 as ev3
 import time
@@ -386,8 +386,9 @@ class DriveSystem(object):
 #   -- Motor
 #   -- TouchSensor
 #   -- ColorSensor
-#   -- IR_DistanceSensor
-#   --
+#   -- InfraredProximitySensor
+#   --Beeper
+#   --ToneMaker
 # USE them, but do NOT modify them.
 ###############################################################################
 class Motor(object):
